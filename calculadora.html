@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trote Solidário</title>
+    <meta name="description" content="Projeto Uni-Facef">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header class="topo">
+        <nav>
+            <span class="logo">Trote Solidário</span>    
+            <ul class="menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="introducao.html">Introdução</a></li>
+                <li><a href="objetivo.html">Objetivo</a></li>
+                <li><a href="formato.html">Formato</a></li>
+                <div class="dropdown">
+                    <span class="etapas">Etapas</span>
+                    <div class="dropdown-content">
+                        <div class="gap">
+                            <p><a href="etapa1.html">1°Etapa</a></p>
+                            <p><a href="etapa2.html">2°Etapa</a></p>
+                        </div>
+                    </div>
+                  </div>
+                <li><a href="observacoesfinais.html">Observações Finais</a></li>
+                <li><a href="calculadora.html">Calculadora</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+            <figure class="unilogo">
+                <a href="https://www.unifacef.com.br/" target="_blank" rel="external"><img src="img/Uni_FACEF_MUNICIPAL160PX.webp" alt="Uni-Facef"></a>
+            </figure>
+            <div class="tema">
+                <input type="checkbox" class="checkbox" id="check">
+        
+                <label class="label" for="check">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <div class="ball"></div>
+                </label>
+            </div>
+        </nav>
+    </header>
+    <main id="main1">  
+
+      <article>
+          <h2 id="h2calc">Pontuações do Time</h2>
+  
+          <form>
+            <section>
+              <h3 id="h3calc">Adicionar Ação Social</h3>
+              <input type="number" id="acaoSocial" placeholder="Pontuação (0-2000)">
+            </section>
+            
+            <section>
+              <h3 id="h3calc">Adicionar Apresentação Musical</h3>
+              <input type="number" id="apresentacaoMusical" placeholder="Pontuação (0-1500)">
+            </section>
+            
+            <section>
+              <h3 id="h3calc">Adicionar Mascote do Time</h3>
+              <input type="number" id="mascoteTime" placeholder="Pontuação (0-500)">
+            </section>
+           
+            <section>
+              <h3 id="h3calc">Adicionar Quiz</h3>
+              <input type="number" id="quiz" placeholder="Pontuação (0-1000)">
+            </section>
+
+            <br>
+
+            <button type="button" onclick="calcularAtividades()">Calcular Pontuações</button>
+            
+            <br><br>
+            
+            <h3 id="h3calc">Pontuação Total:</h3>
+            <div id="pontuacaoTotal">Total: 0 pontos</div>
+          </form>
+          
+          <section class="calculadora">
+            <br> <br>
+            <h2 id="h2calc">Kits de Alimentação</h2>
+            <div>
+              <h3 id="h3calc">Informe quantos kits de alimentação seu time arrecadou (máx.: 80):</h3>
+              <input type="number" id="nro1">
+              <button type="button" onclick="calcularKit()">Calcular Pontos</button>
+              <p id="calculo12"></p>
+            </div>
+            
+            <section>
+              <h2 id="h2calc">Doação de Sangue</h2>
+              <h3 id="h3calc">Informe quantas doações houveram:</h3>
+              <input type="number" id="nro2">
+              <button type="button" onclick="calcularSangue()">Calcular Pontos</button>
+              <p id="calculo2"></p>
+            </section>
+
+            <br>
+
+            <section>
+              <h2 id="h2calc">Itens Adicionais (Kit Alimentação + Suplemento)</h2>
+              <div>
+                <p>
+                  <input type="checkbox" id="kit" onclick="verificaChecagem('kit')"> Kit Alimentação
+                  <input type="number" id="qtdeKit" disabled>
+                </p>
+                <p>
+                  <input type="checkbox" id="suplemento" onclick="verificaChecagem('suplemento')"> Leite de Suplemento
+                  <input type="number" id="qtdeSuplemento" disabled>
+                </p>
+                <p>
+                  <input type="checkbox" id="arroz5" onclick="verificaChecagem('arroz5')"> Arroz (05 Kg)
+                  <input type="number" id="qtdeArroz5" disabled>
+                </p>
+                <p>
+                  <input type="checkbox" id="arroz1" onclick="verificaChecagem('arroz1')"> Arroz (01 Kg)
+                  <input type="number" id="qtdeArroz1" disabled>
+                </p>
+                <p>
+                  <input type="checkbox" id="feijao2" onclick="verificaChecagem('feijao2')"> Feijão (02 Kg)
+                  <input type="number" id="qtdeFeijao2" disabled>
+                </p>
+                <p>
+                  <input type="checkbox" id="feijao1" onclick="verificaChecagem('feijao1')"> Feijão (01 Kg)
+                  <input type="number" id="qtdeFeijao1" disabled>
+                </p>
+                <p>
+                  <input type="checkbox" id="macarrao" onclick="verificaChecagem('macarrao')"> Macarrão (500g)
+                  <input type="number" id="qtdeMacarrao" disabled>
+                </p>
+                <p>
+                  <input type="checkbox" id="oleo" onclick="verificaChecagem('oleo')"> Óleo (900 ml)
+                  <input type="number" id="qtdeOleo" disabled>
+                </p>
+                <button type="button" onclick="calcularAdicional()">Calcular Adicional</button>
+                <p id="total">Total: 0 pontos</p>
+              </div>
+            </section>
+            <br>
+            <button onclick="calcularPontuacaoGeral()">Calcular Pontuação Geral</button>
+            <div id="pontuacaoGeral">Pontuação Geral: 0 pontos</div>
+
+            <br>
+           
+            <h2 id="h2calc">Como são contabilizados os pontos?</h2>
+            <p>Os pontos são contabilizados de acordo com a tabela abaixo:</p>
+          <table class="demo" style="width:80%; margin-left: 80px;">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Pontos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Doação de sangue</td>
+                  <td>20 pontos</td>
+                </tr>
+                <tr>
+                  <td>Kit Alimentação</td>
+                  <td>30 pontos</td>
+                </tr>
+                <tr>
+                  <td>Lata de Suplemento</td>
+                  <td>15 pontos</td>
+                </tr>
+                <tr>
+                  <td>Arroz (05 Kg)</td>
+                  <td>5 pontos</td>
+                </tr>
+                <tr>
+                  <td>Arroz (01 Kg)</td>
+                  <td>1 ponto</td>
+                </tr>
+                <tr>
+                  <td>Feijão (02 Kg)</td>
+                  <td>2 pontos</td>
+                </tr>
+                <tr>
+                  <td>Feijão (01 Kg)</td>
+                  <td>1 ponto</td>
+                </tr>
+                <tr>
+                  <td>Macarrão (500g)</td>
+                  <td>0.5 ponto</td>
+                </tr>
+                <tr>
+                  <td>Óleo (900 ml)</td>
+                  <td>1 ponto</td>
+                </tr>
+              </tbody>
+            </table>
+            <table table class="demo" style="width:80%; margin-left: 80px;">
+                <thead>
+                  <tr>
+                    <th>Quantidade de Kits</th>
+                    <th>Pontuação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>80 kits</td>
+                    <td>5000 pontos</td>
+                  </tr>
+                  <tr>
+                    <td>64 kits</td>
+                    <td>4000 pontos</td>
+                  </tr>
+                  <tr>
+                    <td>40 kits</td>
+                    <td>2500 pontos</td>
+                  </tr>
+                  <tr>
+                    <td>16 kits</td>
+                    <td>1000 pontos</td>
+                  </tr>
+                  <tr>
+                    <td>Menos de 16 kits</td>
+                    <td>0 pontos</td>
+                  </tr>
+                </tbody>
+              </table>
+          </section>
+        </article>
+      </main>
+      <div class="footer-bottom">
+        &copy; 2024 Trote Solidário
+    </div>
+      <script src="calculadora.js"></script>
+    <script src="funcoes.js"></script>
+    <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
+</body>
+</html>
